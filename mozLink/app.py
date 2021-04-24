@@ -4,8 +4,13 @@ import sqlite3
 from flask import Flask, flash, redirect, render_template, request, url_for
 from hashids import Hashids
 
-import config
-
+try:
+    import config
+except ImportError:
+    print("\033[31m\033[01mConfiguration file not found\033[0m \
+    \nPlease copy config.py.sample to config.py and\
+    \b\b\brun the program again.")
+    exit(1)
 
 def create_link_table():
     """Create DB If Not Exsists"""
