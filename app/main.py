@@ -41,12 +41,13 @@ def index():
     if request.method == 'POST':
         url = request.form['url']
 
+        # If user Enter empty Value; Flashing(!) Of the "The URL is required!"
         if not url:
             flash('The URL is required!')
             return redirect(url_for('index'))
 
         url_data = conn.execute('INSERT INTO urls (original_url) VALUES (?)',
-                                (url,))
+                                (url,))  # Write URL data On DB
         conn.commit()
         conn.close()
 
@@ -61,7 +62,7 @@ def index():
 
 @app.route('/<id>')
 def url_redirect(id):
-    """redirected mozLink! URL to orginal Url"""
+    """redirected "mozLink!" URL to orginal Url"""
     conn = sqlite3.connect('database.db')
     conn.row_factory = sqlite3.Row
 
@@ -79,9 +80,10 @@ def url_redirect(id):
 
         conn.commit()
         conn.close()
+        # If valid Id: return origin url example: moz.ln/abcd > https://google.com
         return redirect(original_url)
     else:
-        flash('Invalid URL')
+        flash('Invalid URL')  # If Not valid Id: return index site
         return redirect(url_for('index'))
 
 
