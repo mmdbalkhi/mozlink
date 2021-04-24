@@ -12,6 +12,7 @@ except ImportError:
     \b\b\brun the program again.")
     exit(1)
 
+
 def create_link_table():
     """Create DB If Not Exsists"""
     conn = sqlite3.connect('database.db')
