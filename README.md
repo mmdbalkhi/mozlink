@@ -21,3 +21,7 @@ Note: Sometimes links may **not work** due to site updates.
 5. Connect to virtualenv using `source venv/bin/activate`
 6. From the project folder, install packages using `pip install -r requirements.txt`
 7. Now environment is ready. Run it by `python app/main.py`
+
+## TODO
+
+- [ ] Automatically add http and https to url
