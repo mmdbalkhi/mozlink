@@ -4,7 +4,7 @@
 [![CodeQL](https://github.com/komeilparseh/mozlink/workflows/CodeQL/badge.svg)](https://github.com/komeilparseh/mozlink/actions?query=workflow%3ACodeQL)
 [![Requirements](https://img.shields.io/badge/Requirements-See%20Here-orange)](https://github.com/komeilparseh/mozlink/blob/main/requirements.txt)
 
-[About_EN](https://komeilparseh.github.io/blog/mozlink/) [درباره این به فارسی](https://vrgl.ir/yEtRu)
+[About_EN](https://komeilparseh.github.io/blog/mozlink/)-[درباره این به فارسی](https://vrgl.ir/yEtRu)
 
 </div>
 
