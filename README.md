@@ -1,4 +1,4 @@
-[![LICENSE](https://img.shields.io/badge/LICENSE-GPL--3.0-green)](https://github.com/komeilparseh/mozlink/blob/main/LICENSE) 
+[![LICENSE](https://img.shields.io/badge/LICENSE-GPL--3.0-green)](https://github.com/komeilparseh/mozlink/blob/main/LICENSE)
 [![CodeQL](https://github.com/komeilparseh/mozlink/workflows/CodeQL/badge.svg)](https://github.com/komeilparseh/mozlink/actions?query=workflow%3ACodeQL)
 [![Requirements](https://img.shields.io/badge/Requirements-See%20Here-orange)](https://github.com/komeilparseh/mozlink/blob/main/requirements.txt)
 
@@ -6,7 +6,7 @@
 
 <div align=center>
 
-![logo](https://github.com/KomeilParseh/mozlink/raw/main/app/static/logo.png)
+![logo](app/static/logo.png)
 
 </div>
 
@@ -28,4 +28,4 @@ Note: Sometimes links may **not work** due to site updates.
 
 ## TODO
 
-- [ ] Automatically add http and https to url
+- [x] Automatically add http and https to url
