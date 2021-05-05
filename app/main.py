@@ -13,6 +13,22 @@ except ImportError:
     exit(1)
 
 
+def IS_VALID_URL(URL):  # CHECK URL Is Valid Or no
+    URL = URL.split("//")
+    if "http" in URL[0]:
+        Domain = URL[1].split("/")[0]
+        if '.' in Domain:
+            return True
+        else:
+            False
+    else:
+        Domain = URL[0].split("/")[0]
+        if '.' in Domain:
+            return True
+        else:
+            False
+
+
 def create_link_table():
     """Create DB If Not Exsists"""
     conn = sqlite3.connect('database.db')
@@ -29,7 +45,7 @@ def create_link_table():
 app = Flask(__name__)
 app.config['SECRET_KEY'] = config.SECRET_KEY
 
-hashids = Hashids(min_length=4, salt=app.config['SECRET_KEY'])
+hashids = Hashids(min_length=3, salt=app.config['SECRET_KEY'])
 
 
 @app.route('/', methods=('GET', 'POST'))
@@ -45,6 +61,16 @@ def index():
         if not url:
             flash('The URL is required!')
             return redirect(url_for('index'))
+
+        if "http" not in url:  # Add http to URL if "http" not in Url
+            if IS_VALID_URL(url) == False:
+                flash('The URL is Not Valid!')
+                return redirect(url_for('index'))
+            elif IS_VALID_URL(url) == None:
+                flash('The URL Not Valid!')
+                return redirect(url_for('index'))
+            else:
+                url = "http://" + url
 
         url_data = conn.execute('INSERT INTO urls (original_url) VALUES (?)',
                                 (url,))  # Write URL data On DB
