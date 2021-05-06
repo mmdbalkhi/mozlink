@@ -1,4 +1,5 @@
 #!env/bin/python3
+import re
 import sqlite3
 
 from flask import Flask, flash, redirect, render_template, request, url_for
@@ -13,20 +14,28 @@ except ImportError:
     exit(1)
 
 
-def IS_VALID_URL(URL):  # CHECK URL Is Valid Or no
-    URL = URL.split("//")
-    if "http" in URL[0]:
-        Domain = URL[1].split("/")[0]
-        if '.' in Domain:
-            return True
-        else:
-            False
+def IS_VALID_URL(URL):
+    # Regex to check valid URL
+    regex = ("((http|https)://)(www.)?" +
+             "[a-zA-Z0-9@:%._\\+~#?&//=]" +
+             "{2,256}\\.[a-z]" +
+             "{2,6}\\b([-a-zA-Z0-9@:%" +
+             "._\\+~#?&//=]*)")
+
+    # Compile the ReGex
+    clean = re.compile(regex)
+
+    # If the string is empty
+    # return false
+    if (URL == None):
+        return False
+
+    # Return if the URL
+    # matched the ReGex
+    if(re.search(clean, URL)):
+        return True
     else:
-        Domain = URL[0].split("/")[0]
-        if '.' in Domain:
-            return True
-        else:
-            False
+        return False
 
 
 def create_link_table():
@@ -62,15 +71,11 @@ def index():
             flash('The URL is required!')
             return redirect(url_for('index'))
 
-        if "http" not in url:  # Add http to URL if "http" not in Url
-            if IS_VALID_URL(url) == False:
-                flash('The URL is Not Valid!')
-                return redirect(url_for('index'))
-            elif IS_VALID_URL(url) == None:
-                flash('The URL Not Valid!')
-                return redirect(url_for('index'))
-            else:
-                url = "http://" + url
+        if "http" not in url:
+            url = "http://"+url
+        if IS_VALID_URL(url) == False:
+            flash('The URL is Not Valid!')
+            return redirect(url_for('index'))
 
         url_data = conn.execute('INSERT INTO urls (original_url) VALUES (?)',
                                 (url,))  # Write URL data On DB
