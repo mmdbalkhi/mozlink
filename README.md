@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-[![LICENSE](https://img.shields.io/badge/LICENSE-GPL--3.0-green)](https://github.com/komeilparseh/mozlink/blob/main/LICENSE)
-=======
 <div align=center>
 
 [![LICENSE](https://img.shields.io/badge/LICENSE-GPL--3.0-green)](https://github.com/komeilparseh/mozlink/blob/main/LICENSE) 
->>>>>>> 64f808ab3cf3e39869566ecd1fadec349fc36ee3
 [![CodeQL](https://github.com/komeilparseh/mozlink/workflows/CodeQL/badge.svg)](https://github.com/komeilparseh/mozlink/actions?query=workflow%3ACodeQL)
 [![Requirements](https://img.shields.io/badge/Requirements-See%20Here-orange)](https://github.com/komeilparseh/mozlink/blob/main/requirements.txt)
 
