@@ -28,7 +28,7 @@ Note: Sometimes links may **not work** due to site updates.
 2. Clone the project <div class="termy">
 
 ```console
-git clone https://github.com/KomeilParseh/mozlink.git && cd mozlink`
+git clone https://github.com/KomeilParseh/mozlink.git && cd mozlink
 ```
 
 </div>
@@ -51,7 +51,7 @@ source venv/bin/activate
 6. From the project folder, install packages using <div class="termy">
 
 ```console
-pip install -r requirements.txt`
+pip install -r requirements.txt
 ```
 
 </div>
