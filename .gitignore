@@ -129,5 +129,6 @@ dmypy.json
 .pyre/
 
 database.db
-config.py
-*fandogh*
+config.txt
+.fandogh
+.vscode
