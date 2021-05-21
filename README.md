@@ -1,6 +1,6 @@
 <div align=center>
 
-[![LICENSE](https://img.shields.io/badge/LICENSE-GPL--3.0-green)](https://github.com/komeilparseh/mozlink/blob/main/LICENSE) 
+[![LICENSE](https://img.shields.io/badge/LICENSE-GPL--3.0-green)](https://github.com/komeilparseh/mozlink/blob/main/LICENSE)
 [![CodeQL](https://github.com/komeilparseh/mozlink/workflows/CodeQL/badge.svg)](https://github.com/komeilparseh/mozlink/actions?query=workflow%3ACodeQL)
 [![Requirements](https://img.shields.io/badge/Requirements-See%20Here-orange)](https://github.com/komeilparseh/mozlink/blob/main/requirements.txt)
 
@@ -25,43 +25,35 @@ Note: Sometimes links may **not work** due to site updates.
 ## How to run
 
 1. Install python3, pip3, virtualenv in your system.
-2. Clone the project <div class="termy">
+2. Clone the project
 
 ```console
 git clone https://github.com/KomeilParseh/mozlink.git && cd mozlink
 ```
 
-</div>
-3. in the app folder, rename the `config.py.sample` to `config.py` and do proper changes.
-4. Create a virtualenv named venv using 
-<div class="termy">
+3. Create a virtualenv named venv using
 
 ```console
 virtualenv -p python3 venv
 ```
 
-</div>
-5. Connect to virtualenv using <div class="termy">
+4. Connect to virtualenv using
 
 ```console
 source venv/bin/activate
 ```
 
-</div>
-6. From the project folder, install packages using <div class="termy">
+5. From the project folder, install packages using
 
 ```console
 pip install -r requirements.txt
 ```
 
-</div>
-7. Now environment is ready. Run it by <div class="termy">
+6. Now environment is ready. Run it by
 
 ```console
 python app/main.py
 ```
-
-</div>
 
 ## TODO
 
