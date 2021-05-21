@@ -1,3 +1,7 @@
 .git/*
 .venv/
-.vscode
+.vscode/
+.github/
+*.md
+.gitignore
+LICENSE
