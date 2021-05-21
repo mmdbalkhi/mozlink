@@ -2,9 +2,10 @@ name: Publish
 
 on:
   release:
-    push:
-      tags:
-        - "*"
+    push
+    #:
+    #  tags:
+    #   - "*"
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -17,7 +18,7 @@ jobs:
           pip3 install fandogh-cli --upgrade
       - name: fandogh login
         run: |
-          fandogh login --username ${{ secrets.USERNAME }} --password ${{ secrets.PASSWORD }}
+          fandogh login --username ${{ env.deploy.USERNAME }} --password ${{ env.deploy.PASSWORD }}
       - name: fandogh Image init
         run: fandogh image init --name mozlink
           fandogh image fandogh image publish --version `git describe --tags --abbrev=0`
