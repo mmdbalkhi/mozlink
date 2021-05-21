@@ -16,6 +16,6 @@
 
 {% if short_url %}
 <hr>
-<span>Your short link is {{ short_url }}</span>
+<span>Your short link is <a href="{{ short_url }}" rel="noopener noreferrer" target="_blank">{{ short_url }}</a></span>
 {% endif %}
 {% endblock %}

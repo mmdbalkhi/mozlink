@@ -1,17 +1,29 @@
 #!env/bin/python3
+import random
 import re
 import sqlite3
+from os.path import exists
 
 from flask import Flask, flash, redirect, render_template, request, url_for
 from hashids import Hashids
 
-try:
-    import config
-except ImportError:
-    print("\033[31m\033[01mConfiguration file not found\033[0m \
-    \nPlease copy config.py.sample to config.py and\
-    \b\b\brun the program again.")
-    exit(1)
+
+def get_random_string(length):
+    # SOURCE: https://pynative.com/python-generate-random-string/
+    # choose from all lowercase letter
+    letters = """abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVW\
+        XYZ0123456789 ~`!@#$%^&*()-_=+\|}]{["':;?/>.<,"""
+    result_str = ''.join(random.choice(letters) for i in range(length))
+    return result_str
+
+
+if not exists("config.txt"):
+    file = open("config.txt", "w")
+    file.write(get_random_string(50))
+    file.close()
+
+file = open("config.txt", "r")
+SECRET_KEY = file.read()
 
 
 def IS_VALID_URL(URL):
@@ -52,7 +64,7 @@ def create_link_table():
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = config.SECRET_KEY
+app.config['SECRET_KEY'] = SECRET_KEY
 
 hashids = Hashids(min_length=3, salt=app.config['SECRET_KEY'])
 
