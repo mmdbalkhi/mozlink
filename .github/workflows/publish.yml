@@ -18,7 +18,7 @@ jobs:
           pip3 install fandogh-cli --upgrade
       - name: fandogh login
         run: |
-          fandogh login --username ${{ env.deploy.USERNAME }} \
+          fandogh login --username komeilparseh \
           --password ${{ env.deploy.PASSWORD }}
       - name: fandogh Image init
         run: fandogh image init --name mozlink
