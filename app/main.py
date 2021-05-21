@@ -130,6 +130,14 @@ def url_redirect(id):
         return redirect(url_for('index'))
 
 
+@app.errorhandler(500)
+def server_error():
+    flash("500 Internal Server Error\
+          There is a problem with the main server.\
+        Our colleagues are trying to solve this problem.")
+    return render_template('index.html'), 500
+
+
 if __name__ == "__main__":
     create_link_table()
     app.run("0.0.0.0", 5000, debug=False)
