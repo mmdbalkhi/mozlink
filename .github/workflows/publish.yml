@@ -1,0 +1,32 @@
+name: Publish
+
+on:
+  release:
+    push:
+      tags:
+        - "*"
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: virtualenv
+        run: |
+          pip3 install virtualenv
+          virtualenv venv
+      - name: install requirements
+        run: |
+          source venv/bin/activate
+          pip3 install -r requirements.txt
+          pip3 install fandogh-cli --upgrade
+
+      - name: fandogh login
+        run: |
+          fandogh login --username ${{ secrets.USERNAME }} --password ${{ secrets.PASSWORD }}
+      - name: fandogh Image init
+        run: fandogh image init --name mozlink
+          fandogh image fandogh image publish --version `git describe --tags --abbrev=0`
+      - name: deploy
+        run: |
+          fandogh service deploy --image mozlink --version `git describe --tags --abbrev=0` --name mozlink
