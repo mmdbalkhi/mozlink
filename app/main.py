@@ -39,7 +39,7 @@ def IS_VALID_URL(URL):
 
     # If the string is empty
     # return false
-    if (URL == None):
+    if URL is None:
         return False
 
     # Return if the URL
