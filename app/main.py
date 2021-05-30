@@ -85,7 +85,7 @@ def index():
 
         if "http" not in url:
             url = "http://"+url
-        if IS_VALID_URL(url) == False:
+        if not IS_VALID_URL(url):
             flash('The URL is Not Valid!')
             return redirect(url_for('index'))
 
