@@ -2,7 +2,6 @@
 import random
 import re
 import sqlite3
-from os.path import exists
 
 from flask import Flask, flash, redirect, render_template, request, url_for
 from hashids import Hashids
@@ -16,14 +15,7 @@ def get_random_string(length):
     result_str = ''.join(random.choice(letters) for i in range(length))
     return result_str
 
-
-if not exists("config.txt"):
-    file = open("config.txt", "w")
-    file.write(get_random_string(50))
-    file.close()
-
-file = open("config.txt", "r")
-SECRET_KEY = file.read()
+SECRET_KEY = get_random_string(60)
 
 
 def IS_VALID_URL(URL):
