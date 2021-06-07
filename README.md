@@ -58,3 +58,4 @@ python app/main.py
 ## TODO
 
 - [x] Automatically add http and https to url
+- [ ] Mysql support
