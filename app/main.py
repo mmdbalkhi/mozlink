@@ -48,8 +48,8 @@ def create_link_table():
     conn.execute("""CREATE TABLE IF NOT EXISTS urls (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            original_url TEXT NOT NULL,
-            clicks INTEGER NOT NULL DEFAULT 0);""")
+            original_url TEXT NOT NULL
+            );""")
 
     conn.commit()
     conn.close()
@@ -104,30 +104,16 @@ def url_redirect(id):
     original_id = hashids.decode(id)
     if original_id:
         original_id = original_id[0]
-        url_data = conn.execute('SELECT original_url, clicks FROM urls'
+        url_data = conn.execute('SELECT original_url FROM urls'
                                 ' WHERE id = (?)', (original_id,)
                                 ).fetchone()
         original_url = url_data['original_url']
-        clicks = url_data['clicks']
-
-        conn.execute('UPDATE urls SET clicks = ? WHERE id = ?',
-                     (clicks+1, original_id))
-
-        conn.commit()
         conn.close()
         # If valid Id: return origin url example: moz.ln/abcd > https://google.com
         return redirect(original_url)
     else:
         flash('Invalid URL')  # If Not valid Id: return index site
         return redirect(url_for('index'))
-
-
-@app.errorhandler(500)
-def server_error():
-    flash("500 Internal Server Error\
-          There is a problem with the main server.\
-        Our colleagues are trying to solve this problem.")
-    return render_template('index.html'), 500
 
 
 if __name__ == "__main__":
