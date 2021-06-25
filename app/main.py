@@ -10,7 +10,7 @@ try:
     import .config
 except ImportError:
     print("please copy 'config.py.sample' to 'config.py' and add your Mysql Username, password and host to 'config.py'")
-    exit(0)
+    exit(1)
 
 SECRET_KEY = config.SECRET_KEY
 
