@@ -131,3 +131,5 @@ dmypy.json
 database.db
 .fandogh
 .vscode
+
+config.py

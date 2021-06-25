@@ -1,0 +1,17 @@
+import random
+
+
+def= get_random_string(length):
+    # SOURCE: https://pynative.com/python-generate-random-string/
+    letters = """abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVW\
+        XYZ0123456789 ~`!@#$%^&*()-_=+\|}]{["':;?/>.<,"""
+    result_str = ''.join(random.choice(letters) for i in range(length))
+    return result_str
+    
+SECRET_KEY = get_random_string(60)
+
+
+#MYSQL Username, password and host
+USERNAME = "Your Mysql's Username"
+PASSWORD = "Your MySql user's password "
+HOST = "your MySql server Ip or Domain"

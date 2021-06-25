@@ -1,5 +1,4 @@
 #!env/bin/python3
-import random
 import re
 import sqlite3
 
@@ -7,16 +6,13 @@ from flask import Flask, flash, redirect, render_template, request, url_for
 from hashids import Hashids
 
 
-def get_random_string(length):
-    # SOURCE: https://pynative.com/python-generate-random-string/
-    # choose from all lowercase letter
-    letters = """abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVW\
-        XYZ0123456789 ~`!@#$%^&*()-_=+\|}]{["':;?/>.<,"""
-    result_str = ''.join(random.choice(letters) for i in range(length))
-    return result_str
+try:
+    import .config
+except ImportError:
+    print("please copy 'config.py.sample' to 'config.py' and add your Mysql Username, password and host to 'config.py'")
+    exit(0)
 
-SECRET_KEY = get_random_string(60)
-
+SECRET_KEY = config.SECRET_KEY
 
 def IS_VALID_URL(URL):
     # Regex to check valid URL
