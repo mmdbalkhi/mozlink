@@ -34,8 +34,8 @@ def IS_VALID_URL(URL):
     # matched the ReGex
     if(re.search(clean, URL)):
         return True
-    else:
-        return False
+    
+    return False
 
 
 def create_link_table():
@@ -107,9 +107,9 @@ def url_redirect(id):
         conn.close()
         # If valid Id: return origin url example: moz.ln/abcd > https://google.com
         return redirect(original_url)
-    else:
-        flash('Invalid URL')  # If Not valid Id: return index site
-        return redirect(url_for('index'))
+    
+    flash('Invalid URL')  # If Not valid Id: return index site
+    return redirect(url_for('index'))
 
 
 if __name__ == "__main__":
