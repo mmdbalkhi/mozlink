@@ -1,13 +1,9 @@
 #!env/bin/python3
 from flask import Flask, flash, redirect, render_template, request, url_for
-from hashids import Hashids
 
-from .modulus import is_valid, sqlitedb
-
-from .config import SECRET_KEY
+from .modulus import hashids, is_valid, sqlitedb
 
 app = Flask(__name__)
-hashids = Hashids(min_length=3, salt=SECRET_KEY)
 sql = sqlitedb(path="database.db")
 
 @app.route('/', methods=('GET', 'POST'))
