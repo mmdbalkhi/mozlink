@@ -1,7 +1,10 @@
 #!env/bin/python3
+"""this app power by flask
+with this web app make short link!"""
+
 from flask import Flask, flash, redirect, render_template, request, url_for
 
-from .modulus import hashids, is_valid, sqlitedb
+from .modules import hashids, is_valid, SqLite
 
 app = Flask(__name__)
 sql = sqlitedb(path="database.db")
@@ -33,11 +36,11 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/<id>')
-def url_redirect(id):
+@app.route('/<url_id>')
+def url_redirect(url_id):
     """redirected "mozLink!" URL to orginal Url"""
 
-    original_url = sql.load(id)
+    original_url = sql.load(url_id)
 
     if original_url:
         return redirect(original_url)

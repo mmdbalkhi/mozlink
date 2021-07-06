@@ -23,11 +23,16 @@ except ImportError:
 hashids = Hashids(min_length=3, salt=config.SECRET_KEY)
 
 
-class mysql:
-    pass
+class MySql:
+    """mysql Db configuration and jobs
+    """
 
 
-class sqlitedb:
+    def __init__(self):
+        pass
+
+
+class SqLitedb:
     """SQLite Db configuration and jobs
     """
 
@@ -63,13 +68,13 @@ class sqlitedb:
 
         return url_data
 
-    def read(self, id):
+    def read(self, url_id):
         """read orgin url from db"""
 
         conn = sqlite3.connect(self.path)
         conn.row_factory = sqlite3.Row
 
-        original_id = hashids.decode(id)
+        original_id = hashids.decode(url_id)
         if original_id:
             original_id = original_id[0]
             url_data = conn.execute('SELECT original_url FROM urls'
@@ -91,7 +96,7 @@ def get_random_string(length):
     return result_str
 
 
-def is_valid(URL):
+def is_valid(site_url):
     """Check Is valid Url or Not"""
     # Regex to check valid URL
     regex = ("((http|https)://)?(www.)?" +
@@ -102,7 +107,7 @@ def is_valid(URL):
 
     clean = re.compile(regex)
 
-    if re.search(clean, URL):
+    if re.search(clean, site_url):
         return True
 
     return False
