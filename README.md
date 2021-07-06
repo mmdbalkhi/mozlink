@@ -2,6 +2,7 @@
 
 [![LICENSE](https://img.shields.io/badge/LICENSE-GPL--3.0-green)](https://github.com/komeilparseh/mozlink/blob/main/LICENSE)
 [![CodeQL](https://github.com/komeilparseh/mozlink/workflows/CodeQL/badge.svg)](https://github.com/komeilparseh/mozlink/actions?query=workflow%3ACodeQL)
+[![Test](https://github.com/KomeilParseh/mozlink/actions/workflows/python-app.yml/badge.svg?branch=main)](https://github.com/KomeilParseh/mozlink/actions/workflows/python-app.yml)
 [![Requirements](https://img.shields.io/badge/Requirements-See%20Here-orange)](https://github.com/komeilparseh/mozlink/blob/main/requirements.txt)
 
 [About_EN](https://komeilparseh.github.io/blog/mozlink/)-[درباره این به فارسی](https://vrgl.ir/yEtRu)
