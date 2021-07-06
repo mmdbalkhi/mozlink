@@ -55,8 +55,9 @@ class sqlitedb:
         conn.row_factory = sqlite3.Row
 
         # Write URL data On DB
-        url_data = conn.execute('INSERT INTO urls (original_url) VALUES (?)', (url,)) 
-        
+        url_data = conn.execute('INSERT INTO urls (original_url) \
+        VALUES (?)', (url,))
+
         conn.commit()
         conn.close()
 
@@ -76,7 +77,7 @@ class sqlitedb:
                                     ).fetchone()
             original_url = url_data['original_url']
             conn.close()
-            # If valid Id: return origin url example: moz.ln/abcd > https://google.com
+            # If valid Id: return origin url
             return original_url
         return None
 
