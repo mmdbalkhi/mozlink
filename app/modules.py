@@ -44,6 +44,7 @@ class MySql:
         """read orgin url from db"""
         pass
 
+
 class SqlLitedb:
     """SQLite Db configuration and jobs
     """
