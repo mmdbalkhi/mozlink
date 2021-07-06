@@ -32,7 +32,7 @@ class MySql:
         pass
 
 
-class SqLitedb:
+class SqlLitedb:
     """SQLite Db configuration and jobs
     """
 

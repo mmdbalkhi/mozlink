@@ -7,7 +7,7 @@ from flask import Flask, flash, redirect, render_template, request, url_for
 from .modules import hashids, is_valid, SqLite
 
 app = Flask(__name__)
-sql = sqlitedb(path="database.db")
+sql = SqlLitedb(path="database.db")
 
 
 @app.route('/', methods=('GET', 'POST'))
