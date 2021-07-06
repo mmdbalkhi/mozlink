@@ -20,6 +20,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: git clone
+        run: git clone https://github.com/KomeilParseh/mozlink && cd mozlink
+
       - name: git configuration
         run: |
 
@@ -29,7 +33,7 @@ jobs:
       - name: Write logs
         run: |
 
-          git log --pretty=format:'%h was %an, %ar, message: %s' > gitLog
+          git log > gitLog
           git add gitLog
           git commit -m "git log file"
           git push
