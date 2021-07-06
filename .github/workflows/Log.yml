@@ -23,8 +23,8 @@ jobs:
       - name: git configuration
         run: |
 
-          git config user.name "Log[bot]";
-          git config user.email <>;
+          git config user.name "Log"
+          git config user.email <>
 
       - name: Write logs
         run: |
