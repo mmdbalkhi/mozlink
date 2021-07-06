@@ -23,8 +23,7 @@ jobs:
       - name: git configuration
         run: |
 
-          usr/bin/git config user.name "Log"
-          usr/bin/git config user.email <>
+          which git
 
       - name: Write logs
         run: |
