@@ -1,7 +1,10 @@
 #!env/bin/python3
 from flask import Flask, flash, redirect, render_template, request, url_for
+from hashids import Hashids
 
 from .modulus import is_valid, sqlitedb
+
+from .config import SECRET_KEY
 
 app = Flask(__name__)
 hashids = Hashids(min_length=3, salt=config.SECRET_KEY)
