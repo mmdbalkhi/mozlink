@@ -19,6 +19,8 @@ except ImportError:
 
     import config
 
+hashids = Hashids(min_length=3, salt=config.SECRET_KEY)
+
 class mysql:
     pass
 
@@ -29,8 +31,6 @@ class sqlitedb:
     def __init__(self, path="database.db"):
         self.path = path
     
-    hashids = Hashids(min_length=3, salt=config.SECRET_KEY)
-
     def create_link_table(self):
         """Create DB If Not Exsists"""
     

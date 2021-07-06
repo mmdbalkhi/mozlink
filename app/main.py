@@ -4,6 +4,7 @@ from flask import Flask, flash, redirect, render_template, request, url_for
 from .modulus import is_valid, sqlitedb
 
 app = Flask(__name__)
+hashids = Hashids(min_length=3, salt=config.SECRET_KEY)
 sql = sqlitedb(path="database.db")
 
 @app.route('/', methods=('GET', 'POST'))
@@ -36,7 +37,7 @@ def index():
 def url_redirect(id):
     """redirected "mozLink!" URL to orginal Url"""
 
-    orginal_url = sql.load(id)
+    original_url = sql.load(id)
     
     if original_url:
         return redirect(original_url)
