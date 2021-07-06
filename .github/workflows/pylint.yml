@@ -20,4 +20,4 @@ jobs:
         pip install -r requirements.txt
     - name: Analysing the code with pylint
       run: |
-        pylint app/ --exit-zero
+        pylint app/ --exit-zero --file-output=y
