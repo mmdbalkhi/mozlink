@@ -40,7 +40,7 @@ def index():
 def url_redirect(url_id):
     """redirected "mozLink!" URL to orginal Url"""
 
-    original_url = sql.load(url_id)
+    original_url = sql.read(url_id)
 
     if original_url:
         return redirect(original_url)

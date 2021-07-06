@@ -33,8 +33,8 @@ class MySql:
         self.password = password
 
     def create_link_table(self):
-       """Create DB If Not Exsists"""
-       pass
+        """Create DB If Not Exsists"""
+        pass
 
     def write(self):
         """ write url to db and hash it"""
