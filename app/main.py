@@ -4,7 +4,7 @@ with this web app make short link!"""
 
 from flask import Flask, flash, redirect, render_template, request, url_for
 
-from .modules import hashids, is_valid, SqLitedb
+from .modules import hashids, is_valid, SqlLitedb
 
 app = Flask(__name__)
 sql = SqlLitedb(path="database.db")
