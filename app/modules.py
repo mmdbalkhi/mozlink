@@ -27,9 +27,10 @@ class MySql:
     """mysql Db configuration and jobs
     """
 
-
-    def __init__(self):
-        pass
+    def __init__(self, host, username, password):
+        self.host = host
+        self.username = username
+        self.password = password
 
 
 class SqlLitedb:
