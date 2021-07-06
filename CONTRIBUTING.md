@@ -32,7 +32,7 @@ git checkout -b yourfeature
 
 ```shell
 
-pip3 install -U flake8 pytest
+pip3 install -U pylint pytest
 
 ```
 
@@ -40,11 +40,12 @@ pip3 install -U flake8 pytest
 
 ```shell
 
-flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+pylint
 
-python3 app/main.py
+python3 app/main.py # Smoke Test!
 
 ```
+> It is best to have a minimum pylint score of **7**.
 
 ## If You Want Add an Issues:☄️☄️
 
