@@ -6,11 +6,12 @@ from .modulus import hashids, is_valid, sqlitedb
 app = Flask(__name__)
 sql = sqlitedb(path="database.db")
 
+
 @app.route('/', methods=('GET', 'POST'))
 def index():
     """cryptography url and write url and
-    crypto url to db, if url is none, app return error to user"""
-   
+    crypto url to db, if url is none, app return error user"""
+
     if request.method == 'POST':
         url = request.form['url']
 
@@ -21,7 +22,7 @@ def index():
 
         if "http" not in url:
             url = "http://"+url
-        
+
         url_data = sql.write(url)
 
         url_id = url_data.lastrowid
@@ -37,10 +38,10 @@ def url_redirect(id):
     """redirected "mozLink!" URL to orginal Url"""
 
     original_url = sql.load(id)
-    
+
     if original_url:
         return redirect(original_url)
-    
+
     flash('Invalid URL')
     return redirect(url_for('index')), 404
 

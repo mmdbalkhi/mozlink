@@ -11,7 +11,8 @@ try:
 except ImportError:
     print("If you want to use Mysql:")
     print("please apply your settings under the comfig.py ")
-    print("file and then run the program again, otherwise no action is required.")
+    print("file and then run the program again,\
+    \b\b\b\notherwise no action is required.")
 
     with open("./config.py.sample", "r") as config_sample:
         with open("./config.py", "w") as config_orgin:
@@ -21,8 +22,10 @@ except ImportError:
 
 hashids = Hashids(min_length=3, salt=config.SECRET_KEY)
 
+
 class mysql:
     pass
+
 
 class sqlitedb:
     """SQLite Db configuration and jobs
@@ -30,6 +33,7 @@ class sqlitedb:
 
     def __init__(self, path="database.db"):
         self.path = path
+    
     
     def create_link_table(self):
         """Create DB If Not Exsists"""
@@ -45,6 +49,7 @@ class sqlitedb:
         conn.commit()
         conn.close()
     
+    
     def write(self, url):
         """ write url to db and hash it"""
 
@@ -57,6 +62,7 @@ class sqlitedb:
         conn.close()
 
         return url_data
+
 
     def read(self, id):
         """read orgin url from db"""
@@ -75,12 +81,13 @@ class sqlitedb:
             # If valid Id: return origin url example: moz.ln/abcd > https://google.com
             return original_id
         return None
-    
+
 
 def get_random_string(length):
     """Get random str"""
-    letters = """abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVW\
-        XYZ0123456789 ~`!@#$%^&*()-_=+\|}]{["':;?/>.<,"""
+    letters = """abcdefghijklmnopqrstuvwxyzABCDEFG\
+    HIJKLMNOPQRSTUVWXYZ0123456789\
+    ~`!@#$%^&*()-_=+\|}]{["':;?/>.<, """
     result_str = ''.join(random.choice(letters) for i in range(length))
     return result_str
 
