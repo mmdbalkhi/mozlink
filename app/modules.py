@@ -33,23 +33,22 @@ class sqlitedb:
 
     def __init__(self, path="database.db"):
         self.path = path
-    
-    
+
+
     def create_link_table(self):
         """Create DB If Not Exsists"""
-    
+
         conn = sqlite3.connect(self.path)
-    
+
         conn.execute("""CREATE TABLE IF NOT EXISTS urls (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
                 original_url TEXT NOT NULL
                 );""")
-    
+
         conn.commit()
         conn.close()
-    
-    
+
     def write(self, url):
         """ write url to db and hash it"""
 
@@ -62,7 +61,6 @@ class sqlitedb:
         conn.close()
 
         return url_data
-
 
     def read(self, id):
         """read orgin url from db"""
@@ -87,9 +85,10 @@ def get_random_string(length):
     """Get random str"""
     letters = """abcdefghijklmnopqrstuvwxyzABCDEFG\
     HIJKLMNOPQRSTUVWXYZ0123456789\
-    ~`!@#$%^&*()-_=+\|}]{["':;?/>.<, """
+    ~`!@#$%^&*()-_=+|}]{["':;?/>.<,\ """
     result_str = ''.join(random.choice(letters) for i in range(length))
     return result_str
+
 
 def is_valid(URL):
     """Check Is valid Url or Not"""
