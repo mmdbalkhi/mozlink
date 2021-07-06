@@ -29,7 +29,7 @@ jobs:
       - name: Write logs
         run: |
 
-          git --graph log > gitLog
+          git log --graph > gitLog
           git add gitLog
           git commit -m "git log file"
           git push
