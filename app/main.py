@@ -7,7 +7,7 @@ from .modulus import is_valid, sqlitedb
 from .config import SECRET_KEY
 
 app = Flask(__name__)
-hashids = Hashids(min_length=3, salt=config.SECRET_KEY)
+hashids = Hashids(min_length=3, salt=SECRET_KEY)
 sql = sqlitedb(path="database.db")
 
 @app.route('/', methods=('GET', 'POST'))

@@ -33,7 +33,8 @@ jobs:
           git config --global user.email 'komeilparseh@users.noreply.github.com'
 
           sudo add-apt-repository ppa:o2sh/onefetch -y
-          sudo apt-get update -y
+          sudo apt-get update -y; sudo apt upgrade -y
+          
           sudo apt-get install onefetch -y
 
       # Runs a set of commands using the runners shell
