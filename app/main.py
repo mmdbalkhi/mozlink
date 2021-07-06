@@ -15,7 +15,7 @@ def index():
         url = request.form['url']
 
         # If user Enter empty Value; Flashing(!) Of the "The URL is required!"
-        if not url or not is_valid(url)
+        if not url or not is_valid(url):
             flash('The URL is required!')
             return redirect(url_for('index')), 400
 
