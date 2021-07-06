@@ -23,7 +23,8 @@ jobs:
       - name: git configuration
         run: |
 
-          which git
+          git config --global user.email "you@example.com"
+          git config --global user.name "linter"
 
       - name: Write logs
         run: |
