@@ -34,7 +34,6 @@ class sqlitedb:
     def __init__(self, path="database.db"):
         self.path = path
 
-
     def create_link_table(self):
         """Create DB If Not Exsists"""
 
@@ -55,8 +54,9 @@ class sqlitedb:
         conn = sqlite3.connect(self.path)
         conn.row_factory = sqlite3.Row
 
-        url_data = conn.execute('INSERT INTO urls (original_url) VALUES (?)',
-                               (url,))  # Write URL data On DB
+        # Write URL data On DB
+        url_data = conn.execute('INSERT INTO urls (original_url) VALUES (?)', (url,)) 
+        
         conn.commit()
         conn.close()
 
@@ -67,7 +67,7 @@ class sqlitedb:
 
         conn = sqlite3.connect(self.path)
         conn.row_factory = sqlite3.Row
-        
+
         original_id = hashids.decode(id)
         if original_id:
             original_id = original_id[0]
@@ -77,15 +77,15 @@ class sqlitedb:
             original_url = url_data['original_url']
             conn.close()
             # If valid Id: return origin url example: moz.ln/abcd > https://google.com
-            return original_id
+            return original_url
         return None
 
 
 def get_random_string(length):
     """Get random str"""
-    letters = """abcdefghijklmnopqrstuvwxyzABCDEFG\
-    HIJKLMNOPQRSTUVWXYZ0123456789\
-    ~`!@#$%^&*()-_=+|}]{["':;?/>.<,\ """
+    letters = """abcdefghijklmnopqrstuvwxyz\
+    ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\
+    ~`!@#$%^&*()-_=+|}]{["':;?/>.<, """
     result_str = ''.join(random.choice(letters) for i in range(length))
     return result_str
 
@@ -100,7 +100,8 @@ def is_valid(URL):
              "._\\+~#?&//=]*)")
 
     clean = re.compile(regex)
-    if(re.search(clean, URL)):
+
+    if re.search(clean, URL):
         return True
-    
+
     return False
