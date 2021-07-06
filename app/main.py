@@ -1,92 +1,33 @@
 #!env/bin/python3
-import re
-import sqlite3
-
 from flask import Flask, flash, redirect, render_template, request, url_for
-from hashids import Hashids
 
-
-try:
-    import .config
-except ImportError:
-    print("please copy 'config.py.sample' to 'config.py' and add your Mysql Username, password and host to 'config.py'")
-    exit(1)
-
-SECRET_KEY = config.SECRET_KEY
-
-def IS_VALID_URL(URL):
-    # Regex to check valid URL
-    regex = ("((http|https)://)(www.)?" +
-             "[a-zA-Z0-9@:%._\\+~#?&//=]" +
-             "{2,256}\\.[a-z]" +
-             "{2,6}\\b([-a-zA-Z0-9@:%" +
-             "._\\+~#?&//=]*)")
-
-    # Compile the ReGex
-    clean = re.compile(regex)
-
-    # If the string is empty
-    # return false
-    if URL is None:
-        return False
-
-    # Return if the URL
-    # matched the ReGex
-    if(re.search(clean, URL)):
-        return True
-    
-    return False
-
-
-def create_link_table():
-    """Create DB If Not Exsists"""
-    conn = sqlite3.connect('database.db')
-    conn.execute("""CREATE TABLE IF NOT EXISTS urls (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            original_url TEXT NOT NULL
-            );""")
-
-    conn.commit()
-    conn.close()
-
+from .modulus import is_valid, sqlitedb
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = SECRET_KEY
-
-hashids = Hashids(min_length=3, salt=app.config['SECRET_KEY'])
-
+sql = sqlitedb(path="database.db")
 
 @app.route('/', methods=('GET', 'POST'))
 def index():
-    """Index Site"""
-    conn = sqlite3.connect('database.db')
-    conn.row_factory = sqlite3.Row
-
+    """cryptography url and write url and
+    crypto url to db, if url is none, app return error to user"""
+   
     if request.method == 'POST':
         url = request.form['url']
 
         # If user Enter empty Value; Flashing(!) Of the "The URL is required!"
-        if not url:
+        if not url or not is_valid(url)
             flash('The URL is required!')
-            return redirect(url_for('index'))
+            return redirect(url_for('index')), 400
 
         if "http" not in url:
             url = "http://"+url
-        if not IS_VALID_URL(url):
-            flash('The URL is Not Valid!')
-            return redirect(url_for('index'))
-
-        url_data = conn.execute('INSERT INTO urls (original_url) VALUES (?)',
-                                (url,))  # Write URL data On DB
-        conn.commit()
-        conn.close()
+        
+        url_data = sql.write(url)
 
         url_id = url_data.lastrowid
-        hashid = hashids.encode(url_id)
-        short_url = request.host_url + hashid
+        short_url = request.host_url + hashids.encode(url_id)
 
-        return render_template('index.html', short_url=short_url)
+        return render_template('index.html', short_url=short_url), 201
 
     return render_template('index.html')
 
@@ -94,24 +35,16 @@ def index():
 @app.route('/<id>')
 def url_redirect(id):
     """redirected "mozLink!" URL to orginal Url"""
-    conn = sqlite3.connect('database.db')
-    conn.row_factory = sqlite3.Row
 
-    original_id = hashids.decode(id)
-    if original_id:
-        original_id = original_id[0]
-        url_data = conn.execute('SELECT original_url FROM urls'
-                                ' WHERE id = (?)', (original_id,)
-                                ).fetchone()
-        original_url = url_data['original_url']
-        conn.close()
-        # If valid Id: return origin url example: moz.ln/abcd > https://google.com
+    orginal_url = sql.load(id)
+    
+    if original_url:
         return redirect(original_url)
     
-    flash('Invalid URL')  # If Not valid Id: return index site
-    return redirect(url_for('index'))
+    flash('Invalid URL')
+    return redirect(url_for('index')), 404
 
 
 if __name__ == "__main__":
-    create_link_table()
+    sql.create_link_table()
     app.run("0.0.0.0", 5000, debug=False)

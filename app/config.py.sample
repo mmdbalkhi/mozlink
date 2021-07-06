@@ -1,17 +1,10 @@
-import random
-
-
-def= get_random_string(length):
-    # SOURCE: https://pynative.com/python-generate-random-string/
-    letters = """abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVW\
-        XYZ0123456789 ~`!@#$%^&*()-_=+\|}]{["':;?/>.<,"""
-    result_str = ''.join(random.choice(letters) for i in range(length))
-    return result_str
+from . modules inport get_random_string
     
 SECRET_KEY = get_random_string(60)
+SQL = "sqlite"
 
-
-#MYSQL Username, password and host
-USERNAME = "Your Mysql's Username"
-PASSWORD = "Your MySql user's password "
-HOST = "your MySql server Ip or Domain"
+if SQL == "mysql":
+    # MYSQL Username, password and host
+    USERNAME = "Your Mysql's Username"
+    PASSWORD = "Your MySql user's password "
+    HOST = "your MySql server Ip or Domain"
