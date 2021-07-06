@@ -1,4 +1,4 @@
-from . modules inport get_random_string
+from modules inport get_random_string
     
 SECRET_KEY = get_random_string(60)
 SQL = "sqlite"
