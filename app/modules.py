@@ -32,17 +32,17 @@ class MySql:
         self.username = username
         self.password = password
 
-        def create_link_table(self):
-            """Create DB If Not Exsists"""
-            pass
+    def create_link_table(self):
+       """Create DB If Not Exsists"""
+       pass
 
-        def write(self):
-             """ write url to db and hash it"""
-            pass
+    def write(self):
+        """ write url to db and hash it"""
+        pass
 
-        def read(self):
-            """"read orgin url from db"""
-            pass
+    def read(self):
+        """read orgin url from db"""
+        pass
 
 class SqlLitedb:
     """SQLite Db configuration and jobs
