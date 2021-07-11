@@ -1,13 +1,13 @@
+#!/usr/bin/env python3
 """Project modules"""
 
-import random
 import re
 import sqlite3
 
 from hashids import Hashids
 
 try:
-    import config
+    from config import SECRET_KEY
 except ImportError:
     print("If you want to use Mysql:")
     print("please apply your settings under the comfig.py ")
@@ -18,9 +18,9 @@ except ImportError:
         with open("./config.py", "w") as config_orgin:
             config_orgin.write(config_sample.read())
 
-    import config
+    from config import SECRET_KEY
 
-hashids = Hashids(min_length=3, salt=config.SECRET_KEY)
+hashids = Hashids(min_length=3, salt=SECRET_KEY)
 
 
 class MySql:
@@ -98,15 +98,6 @@ class SqlLitedb:
             # If valid Id: return origin url
             return original_url
         return None
-
-
-def get_random_string(length):
-    """Get random str"""
-    letters = """abcdefghijklmnopqrstuvwxyz\
-    ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\
-    ~`!@#$%^&*()-_=+|}]{["':;?/>.<, """
-    result_str = ''.join(random.choice(letters) for i in range(length))
-    return result_str
 
 
 def is_valid(site_url):
