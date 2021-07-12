@@ -4,10 +4,12 @@ with this web app make short link!"""
 
 from flask import Flask, flash, redirect, render_template, request, url_for
 
-from modules import hashids, is_valid, SqlLitedb
+from modules import SECRET_KEY, SqlLitedb, hashids, is_valid
 
 app = Flask(__name__)
 sql = SqlLitedb(path="database.db")
+
+app.secret_key = SECRET_KEY
 
 
 @app.route('/', methods=('GET', 'POST'))
@@ -21,7 +23,7 @@ def index():
         # If user Enter empty Value; Flashing(!) Of the "The URL is required!"
         if not url or not is_valid(url):
             flash('The URL is required!')
-            return redirect(url_for('index')), 400
+            return redirect(url_for('index'))
 
         if "http" not in url:
             url = "http://"+url
@@ -51,4 +53,4 @@ def url_redirect(url_id):
 
 if __name__ == "__main__":
     sql.create_link_table()
-    app.run("0.0.0.0", 5000, debug=False)
+    app.run("0.0.0.0", 5000, debug=True)

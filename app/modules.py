@@ -6,19 +6,13 @@ import sqlite3
 
 from hashids import Hashids
 
-try:
-    from config import SECRET_KEY
-except ImportError:
-    print("If you want to use Mysql:")
-    print("please apply your settings under the comfig.py ")
-    print("file and then run the program again,\
-    \b\b\b\notherwise no action is required.")
+from config import SECRET_KEY
 
-    with open("./config.py.sample", "r") as config_sample:
-        with open("./config.py", "w") as config_orgin:
-            config_orgin.write(config_sample.read())
+print("If you want to use Mysql:")
+print("please apply your settings under the comfig.py ")
+print("file and then run the program again,\
+\b\b\b\notherwise no action is required.")
 
-    from config import SECRET_KEY
 
 hashids = Hashids(min_length=3, salt=SECRET_KEY)
 
