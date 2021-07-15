@@ -9,6 +9,7 @@ from modules import SECRET_KEY, SqlLitedb, hashids, is_valid
 app = Flask(__name__)
 sql = SqlLitedb(path="database.db")
 
+sql.create_link_table()
 app.secret_key = SECRET_KEY
 
 
@@ -52,5 +53,4 @@ def url_redirect(url_id):
 
 
 if __name__ == "__main__":
-    sql.create_link_table()
     app.run("0.0.0.0", 5000, debug=False)
