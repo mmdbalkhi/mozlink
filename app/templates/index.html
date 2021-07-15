@@ -16,6 +16,13 @@
 
 {% if short_url %}
 <hr>
-<span>Your short link is <a href="{{ short_url }}" rel="noopener noreferrer" target="_blank">{{ short_url }}</a></span>
+<span>Your short link is
+    <a href="{{ short_url }}" rel="noopener noreferrer" target="_blank">
+        <b id="shlink">{{ short_url }}</b>
+    </a>
+</span>
+<button class="btn" onclick="copyToClipboard('#shlink')">
+    <span style="font-size: 2em;" class="fas fa-copy"></span>
+</button>
 {% endif %}
 {% endblock %}
