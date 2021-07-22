@@ -60,7 +60,3 @@ python app/main.py
 
 * [x] Automatically add http and https to url
 * [ ] Mysql support `Start developing MySQL support which unfortunately does not work at the moment!‍‍‍‍`
-
-## Info
-
-info make with [onefetch](https://github.com/o2sh/onefetch) is [here](./info)
