@@ -87,7 +87,6 @@ class MySql: #TODO: Not working right now!
             return cur.execute(
                 f"""SELECT * FROM urls where id in ({original_id});"""
             ).fetchone()
-            db.commit()
 
             # except Exception as err:
             #    print(f"Write To table is having trouble. \n {err}")
