@@ -7,16 +7,12 @@
 [![Requirements](https://img.shields.io/badge/Requirements-See%20Here-orange)](https://github.com/komeilparseh/mozlink/blob/main/requirements.txt)
 
 [About_EN](https://komeilparseh.github.io/blog/2021/May/04/Mozlink/) | [درباره این به فارسی](https://vrgl.ir/yEtRu)
-
-</div>
-
-# mozlink
-
-<div align=center>
-
+  
 ![logo](app/static/logo.png)
 
 </div>
+
+# Moz link
 
 > A program to build **shortLinks**
 
