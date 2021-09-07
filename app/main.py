@@ -2,15 +2,17 @@
 """this app power by flask
 with this web app make short link!"""
 
-from flask import Flask, flash, redirect, render_template, request, url_for
-
 from config import DB, HOST, PASSWORD, SQL, USERNAME
+from flask import Flask, flash, redirect, render_template, request
 from modules import SECRET_KEY, MySql, SqlLitedb, hashids, is_valid
 
 app = Flask(__name__)
 
-sql = SqlLitedb(path="database.db") if SQL == 'sqlite' else MySql(
-    host=HOST, username=USERNAME, password=PASSWORD, db=DB)
+sql = (
+    SqlLitedb(path="database.db")
+    if SQL == "sqlite"
+    else MySql(host=HOST, username=USERNAME, password=PASSWORD, db=DB)
+)
 
 sql.create_link_table()
 app.secret_key = SECRET_KEY
@@ -54,4 +56,5 @@ def url_redirect(url_id):
 
 
 if __name__ == "__main__":
+    sql.create_link_table()
     app.run("0.0.0.0", 5000, debug=False)

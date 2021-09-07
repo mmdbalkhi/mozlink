@@ -4,16 +4,15 @@
 import re
 import sqlite3
 
-from hashids import Hashids
-from mysql.connector import Error, connect, errorcode
-
 from config import SECRET_KEY
-
+from hashids import Hashids
+from mysql import escape_string
+from mysql.connector import Error, connect, errorcode
 
 hashids = Hashids(min_length=3, salt=SECRET_KEY)
 
 
-class MySql: #TODO: Not working right now!
+class MySql:  # TODO: Not working right now!
     """mysql Db configuration and jobs"""
 
     def __init__(self, host, username, password, db):
@@ -35,8 +34,7 @@ class MySql: #TODO: Not working right now!
             elif err.errno == errorcode.ER_BAD_DB_ERROR:
                 print("Database does not exist")
             else:
-                print(err)
-            exit(1)
+                raise
 
     def create_link_table(self):
         """Create DB If Not Exsists"""
@@ -53,8 +51,9 @@ class MySql: #TODO: Not working right now!
                         );"""
             )
             db.commit()
-        except Exception as err:
-            print(f"Table creation is having trouble. \n {err}")
+        except Exception:
+            print("Table creation is having trouble. \n\n")
+            raise
 
     def write(self, orginal_url):
         """write url to TABLE and hash it"""
@@ -71,8 +70,9 @@ class MySql: #TODO: Not working right now!
 
             return cur.lastrowid
 
-        except Exception as err:
-            print(f"Write To table is having trouble. \n {err}")
+        except Exception:
+            print("Write To table is having trouble. \n")
+            raise
 
     def read(self, url_id):
         """read orgin url from tabale"""
@@ -85,7 +85,9 @@ class MySql: #TODO: Not working right now!
             original_id = original_id[0]
             # try:
             return cur.execute(
-                f"""SELECT * FROM urls where id in ({original_id});"""
+                escape_string(
+                    f"""SELECT original_url FROM urls where id in ({original_id});"""
+                )
             ).fetchone()
 
             # except Exception as err:
