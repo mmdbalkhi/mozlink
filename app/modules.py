@@ -63,8 +63,10 @@ class MySql:  # TODO: Not working right now!
 
         try:
             cur.execute(
-                f"""INSERT INTO urls (original_url)\
+                escape_string(
+                    f"""INSERT INTO urls (original_url)\
                         VALUES ("{orginal_url}");"""
+                )
             )
             db.commit()
 
