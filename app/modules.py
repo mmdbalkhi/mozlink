@@ -6,7 +6,6 @@ import sqlite3
 
 from config import SECRET_KEY
 from hashids import Hashids
-from mysql import escape_string
 from mysql.connector import Error, connect, errorcode
 
 hashids = Hashids(min_length=3, salt=SECRET_KEY)
@@ -63,10 +62,8 @@ class MySql:  # TODO: Not working right now!
 
         try:
             cur.execute(
-                escape_string(
-                    f"""INSERT INTO urls (original_url)\
+                f"""INSERT INTO urls (original_url)\
                         VALUES ("{orginal_url}");"""
-                )
             )
             db.commit()
 
@@ -84,16 +81,13 @@ class MySql:  # TODO: Not working right now!
         cur = db.cursor()
         original_id = hashids.decode(url_id)
         if original_id:
-            original_id = original_id[0]
-            # try:
-            return cur.execute(
-                escape_string(
-                    f"""SELECT original_url FROM urls where id in ({original_id});"""
-                )
-            ).fetchone()
-
-            # except Exception as err:
-            #    print(f"Write To table is having trouble. \n {err}")
+            cur.execute(
+                f"""
+                SELECT * FROM urls
+                    where id in ({original_id[0]});"""
+            )
+            url_data = cur.fetchall()[0][1]
+            return url_data
 
 
 class SqlLitedb:
@@ -146,7 +140,9 @@ class SqlLitedb:
         if original_id:
             original_id = original_id[0]
             url_data = conn.execute(
-                "SELECT original_url FROM urls" " WHERE id = (?)", (original_id,)
+                """SELECT original_url FROM urls
+                " " WHERE id = (?)""",
+                (original_id,),
             ).fetchone()
             original_url = url_data["original_url"]
             conn.close()

@@ -13,21 +13,18 @@ def get_random_string(length):
 
 
 SECRET_KEY = get_random_string(60)
-SQL = "mysql"
-USERNAME = ""
+SQL = "sqlite"
 
-if SQL == "mysql":
-    # MYSQL Username, password and host
-    HOST = "your MySql server Ip or Domain"
-    DB = "tabale name"
-    USERNAME = "Your Mysql's Username"
-    PASSWORD = "Your MySql user's password "
+# MYSQL Username, password and host
+HOST = "your MySql server Ip or Domain"
+DB = "tabale name"
+USERNAME = "Your Mysql's Username"
+PASSWORD = "Your MySql user's password "
 
 
-if not USERNAME:
-    print("If you want to use Mysql:")
-    print("please apply your settings under the comfig.py ")
-    print(
-        "file and then run the program again,\
-    \b\b\b\notherwise no action is required."
-    )
+print("If you want to use Mysql:")
+print("please apply your settings under the comfig.py ")
+print(
+    "file and then run the program again,\
+\b\b\b\notherwise no action is required."
+)

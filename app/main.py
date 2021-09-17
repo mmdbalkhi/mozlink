@@ -37,7 +37,7 @@ def index():
         url_id = sql.write(url)
         short_url = request.host_url + hashids.encode(url_id)
 
-        return render_template("index.html", short_url=short_url), 201
+        return render_template("index.html", short_url=short_url)
 
     return render_template("index.html")
 
