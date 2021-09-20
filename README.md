@@ -6,7 +6,7 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/komeilparseh/mozlink/badge)](https://www.codefactor.io/repository/github/komeilparseh/mozlink)
 [![Requirements](https://img.shields.io/badge/Requirements-See%20Here-orange)](https://github.com/komeilparseh/mozlink/blob/main/requirements.txt)
 
-[About_EN](https://komeilparseh.github.io/blog/2021/May/04/Mozlink/) | [درباره این به فارسی](https://vrgl.ir/yEtRu)
+[About_EN](https://mmdbalkhi.github.io/blog/2021/May/04/Mozlink/) | [درباره این به فارسی](https://vrgl.ir/yEtRu)
   
 ![logo](app/static/logo.png)
 
@@ -26,7 +26,7 @@ Note: Sometimes links may **not work** due to site updates.
 2. Clone the project
 
 ```console
-git clone https://github.com/KomeilParseh/mozlink.git && cd mozlink
+git clone https://github.com/mmdbalkhi/mozlink.git && cd mozlink
 ```
 
 3. Create a virtualenv named venv using
