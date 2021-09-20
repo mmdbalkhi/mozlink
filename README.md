@@ -56,4 +56,4 @@ python app/main.py
 ## TODO
 
 * [x] Automatically add http and https to url
-* [ ] Mysql support `Start developing MySQL support which unfortunately does not work at the moment!‍‍‍‍`
+* [x] Mysql support
