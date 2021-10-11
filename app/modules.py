@@ -11,7 +11,7 @@ from mysql.connector import Error, connect, errorcode
 hashids = Hashids(min_length=3, salt=SECRET_KEY)
 
 
-class MySql:  # TODO: Not working right now!
+class MySql:
     """mysql Db configuration and jobs"""
 
     def __init__(self, host, username, password, db):
