@@ -1,0 +1,4 @@
+# requirements.in
+flask
+hashids
+mysql-connector-python
