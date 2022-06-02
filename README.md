@@ -1,23 +1,20 @@
 <div align=center>
 
 [![LICENSE](https://img.shields.io/badge/LICENSE-GPL--3.0-green)](https://github.com/mmdbalkhi/mozlink/blob/main/LICENSE)
-[![CodeQL](https://github.com/mmdbalkhi/mozlink/workflows/CodeQL/badge.svg)](https://github.com/mmdbalkhi/mozlink/actions?query=workflow%3ACodeQL)
-[![Test](https://github.com/mmdbalkhi/mozlink/actions/workflows/python-app.yml/badge.svg?branch=main)](https://github.com/mmdbalkhi/mozlink/actions/workflows/python-app.yml)
-[![CodeFactor](https://www.codefactor.io/repository/github/parseh/parseh/badge)](https://www.codefactor.io/repository/github/parseh/parseh)
 [![Requirements](https://img.shields.io/badge/Requirements-See%20Here-orange)](https://github.com/mmdbalkhi/mozlink/blob/main/requirements.txt)
-
-[About_EN](https://parseh.github.io/blog/2021/May/04/Mozlink/) | [درباره این به فارسی](https://vrgl.ir/yEtRu)
-  
 
 ![logo](app/static/logo.png)
 
 </div>
 
-# Moz link
+# MozLink!
 
 > A program to build **shortLinks**
 
 ~[mozlink-mmdbalkhi.fandogh.cloud](https://mozlink-mmdbalkhi.fandogh.cloud/)Temporary (perhaps permanent!) service link.~
+
+## What is it?
+
 
 ## How to run
 
@@ -25,7 +22,7 @@
 2. Clone the project
 
 ```sh
-git clone https://github.com/parseh/mozlink.git && cd mozlink
+git clone https://github.com/mmdbalkhi/mozlink.git && cd mozlink
 ```
 
 3. Create a virtualenv named venv using
