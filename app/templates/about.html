@@ -1,11 +1,71 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1> {% block title %} About! {% endblock %} </h1>
-    <p>
-        <span class="first-letter">T</span>he Mozlink is a simple, fast, and free link shortener.
-        I make it because I'm in the process of learning how to build a web application and usage of the <a href="https://flask.palletsprojects.com/">Flask</a> framework. 
-    </p>
-    <p>
-        How I can Run this? for more information, please visit <a href="https://github.com/mmdbalkhi/mozlink#readme">Github</a>
-    </p>
+<style>
+    .first-letter {
+        font-size: 250%;
+        color: #2c2c2c;
+    }
+</style>
+<h1> {% block title %} About! {% endblock %} </h1>
+<p>
+    <span class="first-letter">T</span>he Mozlink is a simple, fast, and free link shortener.
+    I make it because I'm in the process of learning how to build a web application and usage of the <a
+        href="https://flask.palletsprojects.com/">Flask</a> framework.
+</p>
+<p>
+    <h3>How I can Run this?</h3> for more information, please visit <a
+        href="https://github.com/mmdbalkhi/mozlink#readme">Github</a>
+</p>
+<p>
+    <h3>Support me?</h3> if you like this project, please give me a star on <a
+        href="https://github.com/mmdbalkhi/mozlink">github</a> or follow me on <a
+        href="https://twitter.com/mmdbalkhi">twitter</a>
+</p>
+<p>
+    <h4> Power by</h4>
+    <ul>
+        <li>
+            <a href="https://flask.palletsprojects.com/">Flask <img
+                    src="https://github.com/pallets/flask/raw/main/docs/_static/flask-icon.png" alt="flask-logo"
+                    width="64" height="64">
+            </a>
+        </li>
+        <li>
+            <a href="https://www.sqlalchemy.org/">SQLAlchemy <img src="https://www.sqlalchemy.org/img/sqla_logo.png"
+                    alt="sqlalchemy-logo" width="300" height="63">
+            </a>
+        </li>
+        <li>
+            <a href="https://hashids.org/">Hsashids <img src="https://avatars.githubusercontent.com/u/8481000"
+                    alt="hashids-logo" width="64" height="64">
+            </a>
+        </li>
+        <li>
+            <a href="https://getbootstrap.com/"> Bootstrap <img
+                    src="https://getbootstrap.com/docs/5.2/assets/brand/bootstrap-logo-shadow.png" alt="bootstrap-logo"
+                    width="64" height="64">
+            </a>
+        </li>
+        <li>
+            <a href="https://popper.js.org/"> popper.js <img
+                    src="https://popper.js.org/static/popper-logo-outlined-fb38d0b34a253d52fc74cd9c4f3dcec3.svg"
+                    width="64" height="64" alt="popper logo">
+
+            </a>
+        </li>
+        <li>
+            <a href="https://sweetalert2.github.io/">sweetalert2 <img
+                    src="https://sweetalert2.github.io/images/favicon.png" width="64" height="64"
+                    alt="SweetAlert2 logo"> </a>
+        </li>
+        <li>
+            <a href="https://github.com/sandoche/Darkmode.js"> DarkMode.js <img
+                    src="https://darkmodejs.learn.uno/favicon.png" width="64" height="64" alt="darkmode.js-logo"> </a>
+        </li>
+        <li>
+            <a href="https://fontawesome.com/">Font Awesome <img src="https://fontawesome.com/favicon.ico" width="64"
+                    height="64" alt="fontAwesome logo"></a>
+        </li>
+    </ul>
+</p>
 {% endblock %}

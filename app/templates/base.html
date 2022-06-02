@@ -27,7 +27,7 @@
 
 <body>
   <div class="center">
-    <navbar style="margin-left: 1%">
+    <navbar style="margin-left: 5%">
       <a href='{{ url_for("index")}}'>Mozlink!</a> |
       <a href="https:&#x2F;&#x2F;github.com&#x2F;mmdbalkhi&#x2F;mozlink">Source Code</a>
       |
@@ -45,17 +45,19 @@
   <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
     integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+  </script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="https://kit.fontawesome.com/872f587f26.js" crossorigin="anonymous"></script>
 
   <script>
     function addDarkmodeWidget() {
-      new Darkmode({ label: "🌓" }).showWidget();
+      new Darkmode({
+        label: "🌓"
+      }).showWidget();
     }
     window.addEventListener("load", addDarkmodeWidget);
   </script>
@@ -68,7 +70,6 @@
       $temp.remove();
       swal("Copyed!", "Your link was successfully copied", "success");
     }
-
   </script>
 </body>
 
