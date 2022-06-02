@@ -5,7 +5,7 @@ Hi Thanks for your **Help**, please First Read [Code Of Conduct](./CODE_OF_CONDU
 
 ## If your Want add a PullRequests:⚡⚡
 
-- 1. To contribute to this project, please [fork](https://github.com/KomeilParseh/mozlink/fork) the project 
+- 1. To contribute to this project, please [fork](https://github.com/mmdbalkhi/mozlink/fork) the project 
 
 - 2. 
 ```
@@ -49,8 +49,8 @@ python3 app/main.py # Smoke Test!
 
 ## If You Want Add an Issues:☄️☄️
 
-- For **Reporting a bug 🐛** Please Go To [here](https://Github.com/KomeilParseh/mozlink/issues/bug)
-- For **Feature Request ✨** Please Go to [here](https://Github.com/KomeilParseh/mozlink/issues/feature)
+- For **Reporting a bug 🐛** Please Go To [here](https://Github.com/mmdbalkhi/mozlink/issues/bug)
+- For **Feature Request ✨** Please Go to [here](https://Github.com/mmdbalkhi/mozlink/issues/feature)
 
 
 
