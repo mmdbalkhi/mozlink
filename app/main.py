@@ -43,7 +43,7 @@ def index():
             flash("The URL is required!")
             return render_template("index.html"), 405
 
-        url_id = Urls(original_url=url).save()
+        url_id = Urls(original_url=Urls.normalise_url(url)).save()
         short_url = request.host_url + hashids.encode(url_id)
 
         return render_template("index.html", short_url=short_url)
@@ -55,7 +55,6 @@ def index():
 def url_redirect(url_id):
     """redirected "mozLink!" URL to orginal Url"""
     original_url = url.get(id=url_id)
-    print(original_url)
     if original_url:
         return redirect(original_url.original_url)
 
