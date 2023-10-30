@@ -1,7 +1,7 @@
 from config import SECRET_KEY
 from flask_sqlalchemy import SQLAlchemy
 from hashids import Hashids
-from werkzeug.urls import url_fix
+from werkzeug.urls import uri_to_iri
 
 db = SQLAlchemy()
 hashids = Hashids(min_length=3, salt=SECRET_KEY)
@@ -37,7 +37,7 @@ class Urls(db.Model):
         :returns:
             `int`: url id
         """
-        self.original_url = url_fix(self.original_url)
+        self.original_url = uri_to_iri(self.original_url)
         db.session.add(self)
         db.session.commit()
         return self.id
@@ -51,12 +51,13 @@ class Urls(db.Model):
         :returns:
             `str`: url to redirect
         """
+        print(id)
         return Urls.query.get(hashids.decode(id)[0])
 
     @staticmethod
     def normalise_url(url: str):
         """normalise url to add `http://` if not present and
-        fix url with :func:`werkzeug.urls.url_fix`
+        fix url with :func:`werkzeug.urls.uri_to_iri`
 
         :args:
             ``url`` (`str`): url to normalise
@@ -66,4 +67,4 @@ class Urls(db.Model):
         """
         if not url.startswith("http://"):
             url = f"http://{url}"
-        return url_fix(url)
+        return uri_to_iri(url)
